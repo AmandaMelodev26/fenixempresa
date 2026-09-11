@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equipamentos para Elevação | Catálogo</title>
+<style>
+  :root{
+    --preto: #0d0d0d;
+    --preto-2: #161616;
+    --carvao: #1f1f1f;
+    --laranja: #ff7a00;
+    --laranja-escuro: #cc5f00;
+    --aco: #8f9296;
+    --branco: #f2f1ee;
+    --linha: #303030;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  body{
+    background:var(--preto);
+    color:var(--branco);
+    font-family:'Arial Narrow', Arial, sans-serif;
+    letter-spacing:0.2px;
+  }
+
+  .site-nav{
+    height:72px; display:flex; align-items:center; justify-content:space-between;
+    gap:24px; padding:0 6vw; background:#1b1b1b; border-bottom:1px solid #303030;
+  }
+  .site-nav a{color:var(--branco); text-decoration:none;}
+  .site-logo{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:1.5px; font-size:19px;}
+  .site-logo img{width:40px; height:40px; border-radius:50%; object-fit:cover;}
+  .site-logo span span{display:block; color:var(--laranja); font-size:10px; letter-spacing:3px; margin-top:3px;}
+  .site-links{display:flex; align-items:center; gap:28px; list-style:none; margin:0; padding:0;}
+  .site-links a{font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.7px; padding:24px 0;}
+  .site-links .site-products-link{display:inline-flex; align-items:center; justify-content:center; background:var(--laranja); color:#fff !important; padding:21px 42px; clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));}
+  .site-links a:hover{color:var(--laranja);}
+  .site-nav-social{display:flex; gap:10px; align-items:center;}
+  .site-nav-social a{display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; color:#fff; text-decoration:none; transition:transform .2s, filter .2s;}
+  .site-nav-social a:hover{transform:scale(1.08); filter:drop-shadow(0 4px 12px rgba(0,0,0,.35));}
+  .site-nav-social svg{width:28px; height:28px;}
+  .site-products-mobile{display:none;}
+  @media (max-width:760px){
+    .site-links{display:none;}
+    .site-nav{padding:0 20px;}
+    .site-products-mobile{display:inline-flex; align-items:center; justify-content:center; background:var(--laranja); color:#fff !important; padding:12px 18px; font-size:13px; font-weight:700; text-transform:uppercase; clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));}
+  }
+
+  /* faixa listrada de aviso - remete a segurança industrial */
+  .faixa-alerta{
+    height:10px;
+    background:repeating-linear-gradient(135deg, var(--laranja), var(--laranja) 18px, #111 18px, #111 36px);
+  }
+
+  header{
+    padding:56px 24px 40px;
+    text-align:center;
+    border-bottom:1px solid var(--linha);
+    background:
+      linear-gradient(180deg, rgba(13,13,13,0.4), rgba(13,13,13,0.95)),
+      repeating-linear-gradient(90deg, #151515, #151515 2px, #0d0d0d 2px, #0d0d0d 40px);
+  }
+
+  header .kicker{
+    color:var(--laranja);
+    font-weight:800;
+    font-size:14px;
+    letter-spacing:3px;
+  }
+
+  header h1{
+    font-family:'Impact','Arial Black',sans-serif;
+    font-size:clamp(38px, 7vw, 72px);
+    color:var(--branco);
+    line-height:0.95;
+    margin-top:10px;
+    text-transform:uppercase;
+  }
+
+  header h1 span{ color:var(--laranja); }
+
+  header p.sub{
+    color:var(--aco);
+    max-width:560px;
+    margin:16px auto 0;
+    font-size:16px;
+  }
+
+  /* categorias */
+  .categorias{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    justify-content:center;
+    padding:40px 24px 8px;
+    max-width:1100px;
+    margin:0 auto;
+  }
+
+  .cat-btn{
+    position:relative;
+    background:var(--laranja);
+    color:#131313;
+    border:none;
+    font-family:'Impact','Arial Black',sans-serif;
+    font-size:20px;
+    text-transform:uppercase;
+    padding:20px 34px;
+    cursor:pointer;
+    min-width:220px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+
+  .cat-btn:hover{ transform:translateY(-3px); }
+
+  .cat-btn.ativo{
+    background:var(--branco);
+    color:#131313;
+  }
+
+  .cat-btn.ativo::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-10px;
+    width:100%; height:4px;
+    background:var(--laranja);
+  }
+
+  .cat-btn small{
+    display:block;
+    font-family:Arial, sans-serif;
+    font-weight:400;
+    font-size:11px;
+    letter-spacing:1px;
+    margin-top:4px;
+    opacity:0.75;
+  }
+
+  /* grid produtos */
+  main{
+    max-width:1200px;
+    margin:0 auto;
+    padding:48px 24px 100px;
+  }
+
+  .titulo-categoria{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:28px;
+    border-bottom:3px solid var(--laranja);
+    padding-bottom:12px;
+  }
+
+  .titulo-categoria h2{
+    font-family:'Impact','Arial Black',sans-serif;
+    font-size:30px;
+    text-transform:uppercase;
+    color:var(--branco);
+  }
+
+  .titulo-categoria .contagem{
+    color:var(--aco);
+    font-size:14px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+    gap:22px;
+  }
+
+  .card{
+    background:var(--carvao);
+    border:1px solid var(--linha);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+
+  .card .imagem{
+    background:#111;
+    aspect-ratio:4/3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-bottom:1px solid var(--linha);
+    position:relative;
+  }
+
+  .card .imagem svg{ width:72%; height:72%; }
+  .card .imagem img{ width:100%; height:100%; object-fit:contain; display:block; background:#fff; }
+
+  .card .corpo{
+    padding:18px 18px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    flex:1;
+  }
+
+  .card h3{
+    font-size:16px;
+    line-height:1.3;
+    font-weight:700;
+    color:var(--branco);
+    min-height:42px;
+  }
+
+  .botoes{
+    margin-top:auto;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .btn{
+    border:none;
+    padding:12px;
+    font-weight:800;
+    font-size:14px;
+    cursor:pointer;
+    text-align:center;
+    text-decoration:none;
+    display:block;
+  }
+
+  .btn-comprar{
+    background:var(--laranja);
+    color:#131313;
+  }
+  .btn-comprar:hover{ background:var(--laranja-escuro); }
+
+  .btn-whats{
+    background:#1c1c1c;
+    color:var(--branco);
+    border:1px solid var(--laranja);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .btn-whats:hover{ background:#242424; }
+
+  footer{
+    border-top:1px solid var(--linha);
+    text-align:center;
+    padding:26px;
+    color:var(--aco);
+    font-size:13px;
+  }
+  .standard-footer{background:linear-gradient(145deg,#0b0c0d 0%,#141517 100%); border-top:3px solid var(--laranja); padding:58px 6vw 20px; text-align:left;}
+  .footer-inner{max-width:1280px; margin:0 auto; padding:0 24px 42px; display:grid; grid-template-columns:1.35fr 1fr 1fr 1.2fr; gap:42px;}
+  .footer-brand-name,.footer-brand-subtitle{display:inline; color:#fff; font-size:27px; font-weight:800; letter-spacing:1px; line-height:1;}
+  .footer-brand-subtitle{margin-left:8px;}
+  .footer-brand p,.footer-col p{color:var(--aco); font-size:14px; line-height:1.7; margin:18px 0 0; max-width:250px;}
+  .footer-col h4{color:var(--laranja); margin:0 0 18px; font-size:15px; text-transform:uppercase;}
+  .footer-col a{display:block; color:var(--aco); text-decoration:none; margin-bottom:12px; font-size:16px;}
+  .footer-col a:hover{color:var(--laranja);}
+  .footer-social{display:flex; flex-direction:column; gap:10px;}
+  .footer-social a{display:inline-flex; align-items:center; gap:12px; width:100%; max-width:238px; padding:10px 13px; border:1px solid #303030; border-radius:5px; color:var(--branco); font-size:16px;}
+  .footer-social a:hover{border-color:var(--laranja);}
+  .footer-social svg{width:30px; height:30px; flex-shrink:0;}
+  .whatsapp-float{position:fixed; right:24px; bottom:20px; z-index:20; width:70px; height:70px; border-radius:50%; display:grid; place-items:center; background:#25d366; color:#fff; text-decoration:none; box-shadow:0 8px 22px rgba(0,0,0,.35);}
+  .whatsapp-float svg{width:38px; height:38px;}
+  .footer-bottom{border-top:1px solid var(--linha); max-width:1280px; margin:0 auto; padding-top:20px; text-align:center; color:var(--aco); font-size:12.5px;}
+  @media (max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}}
+  @media (max-width:600px){.footer-inner{grid-template-columns:1fr; gap:28px;}}
+
+  @media (max-width:520px){
+    .cat-btn{ min-width:0; width:100%; clip-path:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="site-logo" href="index.html">
+    <img src="icone.jpg" alt="Logo Fênix Equipamentos">
+    <span>FÊNIX<span>EQUIPAMENTOS</span></span>
+  </a>
+  <ul class="site-links">
+    <li><a href="index.html#hero">Início</a></li>
+    <li><a class="site-products-link" href="index2.html" aria-label="Abrir página de produtos">Produtos</a></li>
+    <li><a href="https://wa.me/message/3GLJSVNEHOJFK1" target="_blank" rel="noopener noreferrer">Contato</a></li>
+  </ul>
+  <div class="site-nav-social" aria-label="Redes sociais">
+    <a href="https://www.instagram.com/fenix_equipamentos2011/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="instagramGradProducts" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#feda75"/><stop offset="25%" stop-color="#fa7e1e"/><stop offset="50%" stop-color="#d62976"/><stop offset="75%" stop-color="#962fbf"/><stop offset="100%" stop-color="#4f5bd5"/></linearGradient></defs>
+        <rect width="24" height="24" rx="6" fill="url(#instagramGradProducts)"/><rect x="4.2" y="4.2" width="15.6" height="15.6" rx="4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="12" cy="12" r="3.8" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="16.4" cy="7.6" r="1.2" fill="#fff"/>
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/Elisonfenix" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="facebookGradProducts" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1877F2"/><stop offset="100%" stop-color="#0A66C2"/></linearGradient></defs>
+        <rect width="24" height="24" rx="6" fill="url(#facebookGradProducts)"/><path d="M15.5 8.5h-1.5c-.75 0-1 .35-1 1v1.5h2.5l-.35 2.5H13v7h-2.5v-7H8.5V11.5H10.5V9.5c0-2 1.2-3.5 3.5-3.5h1.5V8.5z" fill="#fff"/>
+      </svg>
+    </a>
+  </div>
+  <a class="site-products-mobile" href="index2.html" aria-label="Voltar para a página de produtos">Produtos</a>
+</nav>
+
+<div class="faixa-alerta"></div>
+
+<header>
+  <div class="kicker">EQUIPAMENTOS PARA ELEVAÇÃO E MANUTENÇÃO NR12</div>
+  <h1>Feito para o <span>peso do trabalho</span></h1>
+  <p class="sub">Cestos aéreos, cestos metálicos e guinchos de cabo — escolha uma categoria abaixo para ver os produtos disponíveis.</p>
+</header>
+
+<div class="categorias">
+  <button class="cat-btn ativo" data-cat="todos">
+    Todos os produtos
+    <small>Ver catálogo completo</small>
+  </button>
+  <button class="cat-btn" data-cat="cesto-aereo">
+    Cesto Aéreo
+    <small>Fibra · nivelamento</small>
+  </button>
+  <button class="cat-btn" data-cat="cesto-metalico">
+    Cesto Metálico
+    <small>Estrutura reforçada</small>
+  </button>
+  <button class="cat-btn" data-cat="guincho">
+    Guincho de Cabo
+    <small>Elétrico e manual</small>
+  </button>
+  <button class="cat-btn" data-cat="acessorios">
+    Acessórios
+    <small>Ferramentas e acessórios</small>
+  </button>
+</div>
+
+<main>
+  <div class="titulo-categoria">
+    <h2 id="tituloAtual">Todos os Produtos</h2>
+    <span class="contagem" id="contagemAtual"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer class="standard-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-brand-name">FÊNIX</span><span class="footer-brand-subtitle">EQUIPAMENTOS</span>
+      <p>Ferramentas e acessórios para quem trabalha pesado.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <a href="index.html#hero">Início</a>
+      <a href="index2.html">Máquinas</a>
+      <a href="achadinho.html#produtos">Ferramentas</a>
+      <a href="achadinho.html#produtos">Acessórios</a>
+    </div>
+    <div class="footer-col footer-contact-link">
+      <h4>CONTATO</h4>
+      <a href="https://wa.me/message/3GLJSVNEHOJFK1" target="_blank" rel="noopener noreferrer" style="color:var(--branco); font-weight:600;">Entrar em contato</a>
+    </div>
+    <div class="footer-col">
+      <h4>Redes sociais</h4>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/fenix_equipamentos2011/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="instagramGradFooterProducts" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#feda75"/><stop offset="25%" stop-color="#fa7e1e"/><stop offset="50%" stop-color="#d62976"/><stop offset="75%" stop-color="#962fbf"/><stop offset="100%" stop-color="#4f5bd5"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#instagramGradFooterProducts)"/><rect x="4.2" y="4.2" width="15.6" height="15.6" rx="4" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="12" cy="12" r="3.8" fill="none" stroke="#fff" stroke-width="1.9"/><circle cx="16.4" cy="7.6" r="1.2" fill="#fff"/></svg>
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.facebook.com/Elisonfenix" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="facebookGradFooterProducts" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1877F2"/><stop offset="100%" stop-color="#0A66C2"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#facebookGradFooterProducts)"/><path d="M15.5 8.5h-1.5c-.75 0-1 .35-1 1v1.5h2.5l-.35 2.5H13v7h-2.5v-7H8.5V11.5H10.5V9.5c0-2 1.2-3.5 3.5-3.5h1.5V8.5z" fill="#fff"/></svg>
+          <span>Facebook</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Fênix Equipamentos. Todos os direitos reservados.<div style="margin-top: 0.45rem; font-size: 0.72rem; color: #9a9a9a;">Desenvolvedora Web: Amanda Melo • (21) 9 6905-4367</div></div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/message/3GLJSVNEHOJFK1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.15-.198.297-.768.967-.942 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.52.149-.173.198-.298.298-.496.099-.198.05-.372-.025-.52-.075-.149-.672-1.611-.921-2.206-.242-.579-.487-.5-.672-.51-.173-.007-.372-.009-.571-.009-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.26.489 1.69.626.71.227 1.357.195 1.87.118.57-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.273-.198-.57-.347z"/><path d="M12.004 2.003C6.477 2.003 2 6.48 2 12.004c0 1.989.517 3.864 1.498 5.52L2 22l4.613-1.49A9.981 9.981 0 0112.004 22c5.527 0 10.004-4.477 10.004-9.996C22.008 6.48 17.531 2.003 12.004 2.003zm0 18.204c-1.832 0-3.543-.492-5.038-1.345l-.36-.21-2.74.887.92-2.676-.235-.36A7.921 7.921 0 014.004 12c0-4.411 3.59-8.005 8.004-8.005 4.417 0 8.004 3.595 8.004 8.005 0 4.41-3.587 8.002-8.004 8.002z"/></svg>
+</a>
+
+<script>
+// ---- ícones simples em SVG por categoria (sem depender de imagens externas) ----
+const icones = {
+  "cesto-aereo": `<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="20,35 100,35 90,90 30,90" fill="#ff7a00" stroke="#cc5f00" stroke-width="2"/>
+    <rect x="35" y="55" width="16" height="6" fill="#131313"/>
+    <rect x="69" y="55" width="16" height="6" fill="#131313"/>
+    <line x1="60" y1="35" x2="60" y2="10" stroke="#8f9296" stroke-width="3"/>
+    <circle cx="60" cy="8" r="4" fill="#8f9296"/>
+  </svg>`,
+  "cesto-metalico": `<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="18,38 102,38 92,88 28,88" fill="none" stroke="#8f9296" stroke-width="3"/>
+    <line x1="18" y1="55" x2="102" y2="55" stroke="#8f9296" stroke-width="2"/>
+    <line x1="24" y1="38" x2="34" y2="88" stroke="#8f9296" stroke-width="2"/>
+    <line x1="96" y1="38" x2="86" y2="88" stroke="#8f9296" stroke-width="2"/>
+    <rect x="10" y="30" width="100" height="8" fill="#ff7a00"/>
+  </svg>`,
+  "guincho": `<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20" y="30" width="80" height="45" rx="4" fill="#1c1c1c" stroke="#ff7a00" stroke-width="3"/>
+    <circle cx="60" cy="52" r="18" fill="none" stroke="#ff7a00" stroke-width="4"/>
+    <circle cx="60" cy="52" r="4" fill="#8f9296"/>
+    <line x1="60" y1="75" x2="60" y2="92" stroke="#8f9296" stroke-width="3"/>
+    <polygon points="52,92 68,92 60,100" fill="#8f9296"/>
+  </svg>`
+};
+
+// ---- catálogo de produtos ----
+const produtos = [
+  // CESTO AÉREO
+  { cat:"cesto-aereo", nome:"Cesto Aéreo Duplo de Fibra com Nivelamento Mecânico", imagem:"cestoaereo1.png" },
+  { cat:"cesto-aereo", nome:"Cesto Aéreo Duplo em Fibra, Nivelamento Eletrônico 300kg para NR12", imagem:"cestoaereo2.png" },
+  { cat:"cesto-aereo", nome:"Cesto Aéreo Duplo em Fibra, Nivelamento Hidráulico 300kg", imagem:"cestoaereo3.png" },
+  { cat:"cesto-aereo", nome:"Cesto Aéreo Simples de Fibra - Nivelamento Mecânico", imagem:"cestoaereo4.png" },
+  { cat:"cesto-aereo", nome:"Cesto Simples de Fibra - Nivelamento Hidráulico", imagem:"cestoaereo5.png" },
+  { cat:"cesto-aereo", nome:"Cesto Aéreo em Fibra para 2 pessoas, com Nivelamento Eletrônico - Capacidade de 272 kg", imagem:"cestoaereo7.png" },
+  { cat:"cesto-aereo", nome:"Cesto Aéreo em Fibra para 2 pessoas, com Nivelamento Hidráulico - Capacidade de 272 kg", imagem:"cestoaereo8.png" },
+
+  // CESTO METÁLICO
+  { cat:"cesto-metalico", nome:"Cesto Aéreo Duplo Metálico - Nivelamento Eletrônico para NR12", imagem:"cestometalico1.png" },
+  { cat:"cesto-metalico", nome:"Cesto Aéreo Duplo Metálico - Nivelamento Hidráulico", imagem:"cestometalico2.png" },
+  { cat:"cesto-metalico", nome:"Cesto Aéreo Simples Metálico - Nivelamento Hidráulico", imagem:"cestometalico3.png" },
+  { cat:"cesto-metalico", nome:"Cesto Metálico Suspenso 300 kg", imagem:"cestometalico4.png" },
+
+  // GUINCHO DE CABO
+  { cat:"guincho", nome:"Guincho de Tração 4.5 TON - MD", imagem:"guincho1.png" },
+  { cat:"guincho", nome:"Guincho Hidráulico 4500KG - MD Acessórios", imagem:"guincho2.png" },
+  { cat:"guincho", nome:"Guincho Hidráulico 6000KG - MD Acessórios", imagem:"guincho3.png" },
+
+  // ACESSÓRIOS
+  { cat:"acessorios", nome:"Balancim Telescópico 10.000kg", imagem:"acessorio1.png" },
+  { cat:"acessorios", nome:"Balancim Telescópico 15.000kg", imagem:"acessorio2.png" },
+  { cat:"acessorios", nome:"Balancim Telescópico 6000kg", imagem:"acessorio3.png" },
+  { cat:"acessorios", nome:"Balancim Telescópico Central 10.000kg", imagem:"acessorio4.png" },
+  { cat:"acessorios", nome:"Engate Rápido", imagem:"acessorio5.png" },
+  { cat:"acessorios", nome:"Gancho", imagem:"acessorio6.png" },
+  { cat:"acessorios", nome:"Gancho para Empilhadeira de 1000kg - Simples", imagem:"acessorio7.png" },
+  { cat:"acessorios", nome:"Gancho para Empilhadeira de 3000kg - Duplo", imagem:"acessorio8.png" },
+  { cat:"acessorios", nome:"Malhal Dianteiro Metálico", imagem:"acessorio9.png" },
+  { cat:"acessorios", nome:"Suporte Big Bag MD 1200kg", imagem:"acessorio10.png" },
+  { cat:"acessorios", nome:"Tartaruga de Carga 10.000kg (Com Cabo)", imagem:"acessorio11.png" },
+  { cat:"acessorios", nome:"Tartaruga de Carga 10.000kg (Sem Cabo)", imagem:"acessorio12.png" },
+
+];
+
+const nomesCategoria = {
+  "todos":"Todos os Produtos",
+  "cesto-aereo":"Cesto Aéreo",
+  "cesto-metalico":"Cesto Metálico",
+  "guincho":"Guincho de Cabo",
+  "acessorios":"Acessórios"
+};
+
+function renderizar(categoria){
+  const grid = document.getElementById('grid');
+  const itens = categoria === 'todos' ? produtos : produtos.filter(p => p.cat === categoria);
+
+  document.getElementById('tituloAtual').textContent = nomesCategoria[categoria];
+  document.getElementById('contagemAtual').textContent = itens.length + (itens.length === 1 ? ' produto' : ' produtos');
+
+  grid.innerHTML = itens.map(p => `
+    <div class="card">
+      <div class="imagem">
+        ${p.imagem ? `<img src="${p.imagem}" alt="${p.nome}">` : icones[p.cat]}
+      </div>
+      <div class="corpo">
+        <h3>${p.nome}</h3>
+        <div class="botoes">
+          <a href="https://wa.me/message/3GLJSVNEHOJFK1?text=${encodeURIComponent('Olá, gostaria de saber mais sobre o equipamento: ' + p.nome)}" target="_blank" rel="noopener noreferrer" class="btn btn-whats">
+            Mais informações
+          </a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('ativo'));
+    btn.classList.add('ativo');
+    renderizar(btn.dataset.cat);
+  });
+});
+
+const categoriaInicial = new URLSearchParams(window.location.search).get('categoria');
+const categoriaValida = ['todos', 'cesto-aereo', 'cesto-metalico', 'guincho', 'acessorios'].includes(categoriaInicial) ? categoriaInicial : 'todos';
+document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.toggle('ativo', btn.dataset.cat === categoriaValida));
+renderizar(categoriaValida);
+</script>
+
+</body>
+</html>
